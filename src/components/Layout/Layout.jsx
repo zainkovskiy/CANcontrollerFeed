@@ -34,7 +34,10 @@ export const Layout = (props) => {
         if (res.status === 200) {
           // setData(res.data);
           setData({
-            fake: true,
+            fake: {
+              isActive: false,
+              dateTo: ''
+            },
             address: {
               reqCity: 'Novosibirsk',
               reqStreet: 'Krasniy Prospekt',
@@ -317,9 +320,12 @@ export const Layout = (props) => {
   }
 
   const handleFake = () => {
+    const { target } = event; 
+    const name = target.name;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
     setData((prevState) => ({
       ...prevState,
-      fake: event.target.checked
+      fake: {...prevState.fake, [name]:value}
     }))
   }
 

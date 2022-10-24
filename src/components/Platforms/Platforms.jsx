@@ -14,7 +14,7 @@ export const Platforms = () => {
   }
 
   return (
-    <div style={fake ? isActive : {}}>
+    <div style={fake?.isActive ? isActive : {}}>
       {
         platforms.map((item, idx) =>
           <PlatformItem settings={item} key={item.UID || idx}/>
